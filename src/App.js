@@ -16,8 +16,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path=\"/\" element={<PhoneLock />} />
-          <Route path=\"/loading\" element={<LoadingScreen />} />
+          <Route path="/" element={<PhoneLock />} />
+          <Route path="/loading" element={<LoadingScreen />} />
           <Route path="/error" element={<ErrorScreen />} />
           <Route path="/recovery" element={<RecoveryProtocol />} />
           <Route path="/saving" element={<SavingScreen />} />
