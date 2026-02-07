@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LoadingScreen />} />
           <Route path="/error" element={<ErrorScreen />} />
-          <Route path="/phonelock" element={<ErrorScreen />} />
+          <Route path="/phonelock" element={<PhoneLock />} />
           <Route path="/recovery" element={<RecoveryProtocol />} />
           <Route path="/saving" element={<SavingScreen />} />
           <Route path="/tictactoe" element={<TicTacToe />} />
