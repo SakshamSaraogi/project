@@ -33,11 +33,15 @@
 
 .couple-illustration {
   margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   animation: bounceIn 1s ease-out 0.3s both;
 }
 
 .couple-image {
-  width: 350px;
+  width: 480px;          /* bigger on desktop */
+  max-width: 90vw;       /* responsive */
   height: auto;
   animation: gentle-float 3s ease-in-out infinite;
 }
@@ -51,10 +55,10 @@
 }
 
 .love-text {
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   color: #aaa;
   letter-spacing: 0.15rem;
-  font-style: italic;
+  font-style: bold;
 }
 
 .left-text {
@@ -143,18 +147,17 @@
     font-size: 1.5rem;
     letter-spacing: 0.2rem;
   }
-  
-  .couple-svg {
-    width: 250px;
-    height: 250px;
+
+  .couple-image {
+    width: 260px;
   }
-  
+
   .love-messages {
     padding: 0 20px;
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .love-text {
     font-size: 1.1rem;
   }
