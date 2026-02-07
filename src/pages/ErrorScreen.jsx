@@ -11,7 +11,7 @@ const ErrorScreen = () => {
   }, []);
 
   const handleRecovery = () => {
-    navigate('/recovery');
+    navigate('/phonelock');
   };
 
   return (
