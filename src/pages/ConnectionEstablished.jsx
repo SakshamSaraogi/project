@@ -22,8 +22,8 @@ const ConnectionEstablished = () => {
         </div>
         
         <div className="love-messages">
-          <p className="love-text left-text">Love you</p>
-          <p className="love-text right-text">Long time &lt;3</p>
+          <p className="love-text left-text">Suku 💓 Sanu</p>
+          <p className="love-text right-text">Valentine Couple &lt;3</p>
         </div>
       </div>
     </div>

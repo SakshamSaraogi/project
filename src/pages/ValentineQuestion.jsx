@@ -43,7 +43,7 @@ const ValentineQuestion = () => {
   return (
     <div className="valentine-screen">
       <div className="valentine-content">
-        <p className="step-label">STEP 3 OF 3</p>
+        <p className="step-label">STEP 4 OF 4</p>
         <h1 className="valentine-title">FINAL VERIFICATION</h1>
         <p className="waiting-text">Saksham is waiting...</p>
 

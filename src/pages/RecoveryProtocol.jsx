@@ -83,7 +83,7 @@ const RecoveryProtocol = () => {
   return (
     <div className="recovery-screen">
       <div className="recovery-content">
-        <p className="step-label">STEP 1 OF 3</p>
+        <p className="step-label">STEP 2 OF 4</p>
         <h1 className="recovery-title">RECOVERY PROTOCOL</h1>
 
         <div className="protocol-box">

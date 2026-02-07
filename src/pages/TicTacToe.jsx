@@ -68,7 +68,7 @@ const TicTacToe = () => {
   return (
     <div className="tictactoe-screen">
       <div className="tictactoe-content">
-        <p className="step-label">STEP 2 OF 3</p>
+        <p className="step-label">STEP 3 OF 4</p>
         <h1 className="tictactoe-title">PLAY TO PROCEED</h1>
         <p className="turn-text">{gameWon ? '' : 'Their turn'}</p>
 
