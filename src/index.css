@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  font-family: 'Patrick Hand', cursive;
+  font-family: 'Patrick Hand', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

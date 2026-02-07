@@ -8,7 +8,7 @@ module.exports = {
   theme: {
   	extend: {
 		fontFamily: {
-    		patrick: ['"Patrick Hand"', 'cursive'],
+    		patrick: ['"Patrick Hand"', 'sans-serif'],
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
