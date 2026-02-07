@@ -11,11 +11,11 @@ const ConnectionEstablished = () => {
   return (
     <div className="established-screen">
       <div className={`established-content ${show ? 'show' : ''}`}>
-        <h1 className="established-title">CONNECTION ESTABLISHED!</h1>
+        <h1 className="established-title">Connection Established!</h1>
         
         <div className="couple-illustration">
           <img 
-            src="/workspaces/project/images/meme.png" 
+            src="images/meme.png" 
             alt="Couple" 
             className="couple-image"
           />
