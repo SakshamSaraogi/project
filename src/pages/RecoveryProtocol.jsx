@@ -8,42 +8,64 @@ const RecoveryProtocol = () => {
   const canvasRef = useRef(null);
   const navigate = useNavigate();
 
+  // ✅ FIX 1: Proper canvas scaling for mobile & desktop
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      ctx.strokeStyle = '#000';
-      ctx.lineWidth = 2;
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
-    }
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+
+    ctx.scale(dpr, dpr);
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
   }, []);
 
-  const startDrawing = (e) => {
+  // ✅ FIX 2: Unified mouse + touch coordinates
+  const getCanvasCoords = (e) => {
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
-    const ctx = canvas.getContext('2d');
-    
+
+    if (e.touches && e.touches.length > 0) {
+      return {
+        x: e.touches[0].clientX - rect.left,
+        y: e.touches[0].clientY - rect.top,
+      };
+    }
+
+    return {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    };
+  };
+
+  // ✅ FIX 3: Correct drawing handlers
+  const startDrawing = (e) => {
+    e.preventDefault();
+
+    const ctx = canvasRef.current.getContext('2d');
+    const { x, y } = getCanvasCoords(e);
+
     setIsDrawing(true);
     setHasSignature(true);
-    
-    const x = e.type.includes('mouse') ? e.clientX - rect.left : e.touches[0].clientX - rect.left;
-    const y = e.type.includes('mouse') ? e.clientY - rect.top : e.touches[0].clientY - rect.top;
-    
+
     ctx.beginPath();
     ctx.moveTo(x, y);
   };
 
   const draw = (e) => {
     if (!isDrawing) return;
-    
-    const canvas = canvasRef.current;
-    const rect = canvas.getBoundingClientRect();
-    const ctx = canvas.getContext('2d');
-    
-    const x = e.type.includes('mouse') ? e.clientX - rect.left : e.touches[0].clientX - rect.left;
-    const y = e.type.includes('mouse') ? e.clientY - rect.top : e.touches[0].clientY - rect.top;
-    
+    e.preventDefault();
+
+    const ctx = canvasRef.current.getContext('2d');
+    const { x, y } = getCanvasCoords(e);
+
     ctx.lineTo(x, y);
     ctx.stroke();
   };
@@ -63,18 +85,23 @@ const RecoveryProtocol = () => {
       <div className="recovery-content">
         <p className="step-label">STEP 1 OF 3</p>
         <h1 className="recovery-title">RECOVERY PROTOCOL</h1>
-        
+
         <div className="protocol-box">
-          <p className="restore-text">To restore connection, please acknowledge:</p>
-          <p className="confession-text">"Saksham Loves You More"</p>
-          
-          <p className="sign-instruction">Sign below to confirm ↓</p>
-          
+          <p className="restore-text">
+            To restore connection, please acknowledge:
+          </p>
+
+          <p className="confession-text">
+            "Saksham Loves You More"
+          </p>
+
+          <p className="sign-instruction">
+            Sign below to confirm ↓
+          </p>
+
           <canvas
             ref={canvasRef}
             className="signature-canvas"
-            width={600}
-            height={200}
             onMouseDown={startDrawing}
             onMouseMove={draw}
             onMouseUp={stopDrawing}
@@ -84,8 +111,8 @@ const RecoveryProtocol = () => {
             onTouchEnd={stopDrawing}
           />
         </div>
-        
-        <button 
+
+        <button
           className={`submit-button ${hasSignature ? 'active' : ''}`}
           onClick={handleSubmit}
           disabled={!hasSignature}
