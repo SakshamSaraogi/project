@@ -1,0 +1,131 @@
+.valentine-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  padding: 40px 20px;
+  animation: fadeIn 0.5s ease-in;
+  position: relative;
+  overflow: hidden;
+}
+
+.valentine-content {
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+  position: relative;
+}
+
+.step-label {
+  font-size: 0.9rem;
+  letter-spacing: 0.3rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.valentine-title {
+  font-size: 1.8rem;
+  letter-spacing: 0.3rem;
+  color: #666;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.waiting-text {
+  font-size: 1rem;
+  color: #999;
+  letter-spacing: 0.1rem;
+  margin-bottom: 60px;
+}
+
+.question-text {
+  font-size: 2rem;
+  color: #e85d75;
+  letter-spacing: 0.1rem;
+  margin-bottom: 80px;
+  font-weight: 400;
+}
+
+.buttons-container {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.yes-button {
+  position: relative;
+  z-index: 10;
+}
+
+.yes-button,
+.no-button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 18px 70px;
+  font-size: 1.2rem;
+  letter-spacing: 0.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Pretty Neat', cursive;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.yes-button:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.no-button {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.no-button.poof {
+  animation: poofEffect 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes poofEffect {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .valentine-title {
+    font-size: 1.3rem;
+  }
+  
+  .question-text {
+    font-size: 1.5rem;
+  }
+  
+  .yes-button,
+  .no-button {
+    padding: 15px 50px;
+    font-size: 1rem;
+  }
+  
+  .buttons-container {
+    gap: 20px;
+  }
+}

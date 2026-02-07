@@ -1,0 +1,48 @@
+.heart-loading-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  animation: fadeIn 0.5s ease-in;
+}
+
+.hearts-wave {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.wave-heart {
+  width: 50px;
+  height: 50px;
+  animation: heartWave 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(232, 93, 117, 0.3));
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes heartWave {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .hearts-wave {
+    gap: 20px;
+  }
+  
+  .wave-heart {
+    width: 35px;
+    height: 35px;
+  }
+}

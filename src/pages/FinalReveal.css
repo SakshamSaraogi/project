@@ -1,0 +1,186 @@
+.final-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffe6f0 0%, #ffd6e8 50%, #ffcce0 100%);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.final-content {
+  text-align: center;
+  z-index: 1;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.final-content.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hearts-container {
+  margin-bottom: 40px;
+  position: relative;
+  height: 100px;
+}
+
+.heart {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: float 3s ease-in-out infinite;
+}
+
+.heart-1 {
+  top: 0;
+  animation-delay: 0s;
+}
+
+.heart-2 {
+  top: 20px;
+  left: 40%;
+  width: 45px;
+  height: 45px;
+  animation-delay: 0.5s;
+}
+
+.heart-3 {
+  top: 20px;
+  left: 60%;
+  width: 45px;
+  height: 45px;
+  animation-delay: 1s;
+}
+
+.final-title {
+  font-size: 2.5rem;
+  letter-spacing: 0.3rem;
+  color: #d63384;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.2);
+  animation: glow 2s ease-in-out infinite;
+}
+
+.final-message {
+  font-size: 1.8rem;
+  color: #e83e8c;
+  letter-spacing: 0.1rem;
+  margin-bottom: 50px;
+  animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.love-message {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px 40px;
+  border-radius: 15px;
+  margin: 40px auto;
+  max-width: 600px;
+  box-shadow: 0 8px 30px rgba(214, 51, 132, 0.2);
+  animation: fadeInUp 1s ease-out 0.7s both;
+}
+
+.signature-confirmed {
+  font-size: 0.95rem;
+  color: #999;
+  letter-spacing: 0.2rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.final-confession {
+  font-size: 2rem;
+  color: #d63384;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.forever-text {
+  font-size: 1.3rem;
+  color: #e83e8c;
+  letter-spacing: 0.15rem;
+  margin-top: 40px;
+  animation: fadeInUp 1s ease-out 1s both;
+  font-style: italic;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-20px) scale(1.1);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.2),
+                 0 0 10px rgba(214, 51, 132, 0.3);
+  }
+  50% {
+    text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.4),
+                 0 0 20px rgba(214, 51, 132, 0.5);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .final-title {
+    font-size: 1.8rem;
+    letter-spacing: 0.2rem;
+  }
+  
+  .final-message {
+    font-size: 1.3rem;
+  }
+  
+  .final-confession {
+    font-size: 1.5rem;
+  }
+  
+  .love-message {
+    padding: 25px 30px;
+  }
+  
+  .forever-text {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,217 @@
+.tictactoe-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ececec 0%, #dcdcdc 100%);
+  padding: 40px 20px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.tictactoe-content {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.step-label {
+  font-size: 0.9rem;
+  letter-spacing: 0.3rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.tictactoe-title {
+  font-size: 1.8rem;
+  letter-spacing: 0.3rem;
+  color: #666;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.turn-text {
+  font-size: 1rem;
+  color: #888;
+  letter-spacing: 0.1rem;
+  margin-bottom: 40px;
+  min-height: 24px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto 40px;
+  position: relative;
+}
+
+.game-board::before,
+.game-board::after {
+  content: '';
+  position: absolute;
+  background: #333;
+}
+
+/* Vertical lines */
+.game-board::before {
+  width: 4px;
+  height: 100%;
+  left: 33.33%;
+  transform: translateX(-50%);
+}
+
+.game-board::after {
+  width: 4px;
+  height: 100%;
+  left: 66.66%;
+  transform: translateX(-50%);
+}
+
+.game-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  position: relative;
+  border-bottom: 4px solid #333;
+}
+
+.game-cell:nth-child(1),
+.game-cell:nth-child(2),
+.game-cell:nth-child(3) {
+  border-top: none;
+}
+
+.game-cell:nth-child(7),
+.game-cell:nth-child(8),
+.game-cell:nth-child(9) {
+  border-bottom: none;
+}
+
+.game-cell:hover:not(.filled) {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.game-cell.filled {
+  cursor: default;
+}
+
+.game-cell.winning {
+  animation: winPulse 0.6s ease-in-out;
+}
+
+.game-icon {
+  width: 70px;
+  height: 70px;
+  animation: iconAppear 0.3s ease-out;
+}
+
+.heart-icon {
+  filter: drop-shadow(0 2px 4px rgba(232, 93, 117, 0.3));
+}
+
+.cross-icon {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.win-message {
+  animation: slideUp 0.5s ease-out;
+}
+
+.win-text {
+  font-size: 1.5rem;
+  color: #666;
+  letter-spacing: 0.1rem;
+  margin-bottom: 30px;
+}
+
+.continue-button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 16px 60px;
+  font-size: 1.1rem;
+  letter-spacing: 0.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Pretty Neat', cursive;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  animation: buttonAppear 0.5s ease-out;
+}
+
+.continue-button:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.continue-button:active {
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes iconAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes winPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes buttonAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .game-board {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .game-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .tictactoe-title {
+    font-size: 1.3rem;
+  }
+  
+  .win-text {
+    font-size: 1.2rem;
+  }
+}

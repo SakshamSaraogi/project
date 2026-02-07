@@ -1,0 +1,162 @@
+.established-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fafafa 0%, #efefef 100%);
+  padding: 40px 20px;
+  animation: fadeIn 0.8s ease-in;
+}
+
+.established-content {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.established-content.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.established-title {
+  font-size: 2.5rem;
+  letter-spacing: 0.3rem;
+  color: #666;
+  margin-bottom: 60px;
+  font-weight: 400;
+  animation: slideDown 1s ease-out;
+}
+
+.couple-illustration {
+  margin: 40px auto;
+  animation: bounceIn 1s ease-out 0.3s both;
+}
+
+.couple-image {
+  width: 350px;
+  height: auto;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+  animation: gentle-float 3s ease-in-out infinite;
+}
+
+.love-messages {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+  padding: 0 60px;
+}
+
+.love-text {
+  font-size: 1.3rem;
+  color: #aaa;
+  letter-spacing: 0.15rem;
+  font-style: italic;
+}
+
+.left-text {
+  animation: fadeInLeft 1s ease-out 0.8s both;
+}
+
+.right-text {
+  animation: fadeInRight 1s ease-out 1s both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes gentle-sway {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .established-title {
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+  }
+  
+  .couple-svg {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .love-messages {
+    padding: 0 20px;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .love-text {
+    font-size: 1.1rem;
+  }
+}

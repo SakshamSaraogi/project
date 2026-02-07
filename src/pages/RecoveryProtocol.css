@@ -1,0 +1,138 @@
+.recovery-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ececec 0%, #dcdcdc 100%);
+  padding: 40px 20px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.recovery-content {
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+}
+
+.step-label {
+  font-size: 0.9rem;
+  letter-spacing: 0.3rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.recovery-title {
+  font-size: 1.8rem;
+  letter-spacing: 0.3rem;
+  color: #666;
+  margin-bottom: 60px;
+  font-weight: 400;
+}
+
+.protocol-box {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 40px 30px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.restore-text {
+  font-size: 1rem;
+  color: #888;
+  letter-spacing: 0.1rem;
+  margin-bottom: 25px;
+}
+
+.confession-text {
+  font-size: 1.8rem;
+  color: #333;
+  letter-spacing: 0.1rem;
+  margin: 30px 0;
+  font-weight: 400;
+}
+
+.sign-instruction {
+  font-size: 0.95rem;
+  color: #999;
+  letter-spacing: 0.1rem;
+  margin: 30px 0 20px;
+}
+
+.signature-canvas {
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  cursor: crosshair;
+  background: #fff;
+  touch-action: none;
+  transition: border-color 0.3s ease;
+}
+
+.signature-canvas:hover {
+  border-color: #999;
+}
+
+.submit-button {
+  background: #ddd;
+  color: #999;
+  border: none;
+  padding: 16px 70px;
+  font-size: 1.1rem;
+  letter-spacing: 0.2rem;
+  border-radius: 50px;
+  cursor: not-allowed;
+  font-family: 'Pretty Neat', cursive;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+.submit-button.active {
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  opacity: 1;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.submit-button.active:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.submit-button.active:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .recovery-title {
+    font-size: 1.3rem;
+    letter-spacing: 0.2rem;
+  }
+  
+  .confession-text {
+    font-size: 1.3rem;
+  }
+  
+  .signature-canvas {
+    height: 150px;
+  }
+  
+  .protocol-box {
+    padding: 30px 20px;
+  }
+  
+  .submit-button {
+    padding: 14px 50px;
+    font-size: 1rem;
+  }
+}
