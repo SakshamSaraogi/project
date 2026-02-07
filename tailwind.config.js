@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+    		patrick: ['"Patrick Hand"', 'cursive'],
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

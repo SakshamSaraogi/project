@@ -15,7 +15,7 @@ const ConnectionEstablished = () => {
         
         <div className="couple-illustration">
           <img 
-            src="https://customer-assets.emergentagent.com/job_romance-glow-1/artifacts/f7dlfjh0_image.png" 
+            src="/images/meme.png" 
             alt="Couple" 
             className="couple-image"
           />
