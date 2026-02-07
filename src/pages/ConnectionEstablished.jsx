@@ -15,7 +15,7 @@ const ConnectionEstablished = () => {
         
         <div className="couple-illustration">
           <img 
-            src="/images/meme.png" 
+            src="/workspaces/project/images/meme.png" 
             alt="Couple" 
             className="couple-image"
           />
