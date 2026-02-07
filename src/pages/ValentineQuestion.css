@@ -49,12 +49,13 @@
 
 .buttons-container {
   position: relative;
-  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 40px;
+  margin-top: 40px;
 }
+
 
 .yes-button {
   position: relative;
@@ -97,15 +98,15 @@
 
 @keyframes poofEffect {
   0% {
-    transform: translate(-50%, -50%) scale(1);
+    transform: scale(1);
     opacity: 1;
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.3);
+    transform: scale(1.3);
     opacity: 0.5;
   }
   100% {
-    transform: translate(-50%, -50%) scale(0);
+    transform: scale(0);
     opacity: 0;
   }
 }
@@ -126,6 +127,6 @@
   }
   
   .buttons-container {
-    gap: 20px;
+    flex-direction: row; /* enforce side-by-side */
   }
 }

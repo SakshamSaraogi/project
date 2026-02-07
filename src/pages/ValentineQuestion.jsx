@@ -1,29 +1,36 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ValentineQuestion.css';
 
 const ValentineQuestion = () => {
-  const [noButtonPosition, setNoButtonPosition] = useState({ top: '60%', left: '70%' });
-  const [hoverCount, setHoverCount] = useState(0);
-  const [noButtonVisible, setNoButtonVisible] = useState(true);
-  const [showPoof, setShowPoof] = useState(false);
   const navigate = useNavigate();
 
+  const [moveCount, setMoveCount] = useState(0);
+  const [noStyle, setNoStyle] = useState({});
+  const [showPoof, setShowPoof] = useState(false);
+  const [showNo, setShowNo] = useState(true);
+
   const positions = [
-    { top: '60%', left: '70%' },
-    { top: '40%', left: '80%' },
-    { top: '75%', left: '25%' },
+    { top: '55%', left: '65%' },
+    { top: '40%', left: '20%' },
+    { top: '70%', left: '80%' },
   ];
 
-  const handleNoHover = () => {
-    if (hoverCount < 2) {
-      setHoverCount(prev => prev + 1);
-      setNoButtonPosition(positions[hoverCount + 1]);
+  const handleNoInteraction = () => {
+    if (moveCount < 2) {
+      const next = positions[moveCount + 1];
+      setMoveCount(prev => prev + 1);
+
+      setNoStyle({
+        position: 'absolute',
+        top: next.top,
+        left: next.left,
+        transform: 'translate(-50%, -50%)',
+      });
     } else {
-      // Final hover - poof effect
       setShowPoof(true);
       setTimeout(() => {
-        setNoButtonVisible(false);
+        setShowNo(false);
         setShowPoof(false);
       }, 500);
     }
@@ -46,17 +53,13 @@ const ValentineQuestion = () => {
           <button className="yes-button" onClick={handleYesClick}>
             Yes
           </button>
-          
-          {noButtonVisible && (
+
+          {showNo && (
             <button
               className={`no-button ${showPoof ? 'poof' : ''}`}
-              style={{
-                position: 'absolute',
-                top: noButtonPosition.top,
-                left: noButtonPosition.left,
-                transform: 'translate(-50%, -50%)'
-              }}
-              onMouseEnter={handleNoHover}
+              style={noStyle}
+              onClick={handleNoInteraction}     // 📱 mobile
+              onMouseEnter={handleNoInteraction} // 🖥 desktop
             >
               No
             </button>
