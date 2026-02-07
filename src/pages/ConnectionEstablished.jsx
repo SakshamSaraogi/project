@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ConnectionEstablished.css';
 
 const ConnectionEstablished = () => {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => setShow(true), 300);
   }, []);
+
+  const handleContinue = () => {
+    navigate('/letter');
+  };
 
   return (
     <div className="established-screen">
@@ -25,6 +31,9 @@ const ConnectionEstablished = () => {
           <p className="love-text left-text">Suku 💓 Sanu</p>
           <p className="love-text right-text">Valentine Couple &lt;3</p>
         </div>
+        <button className="continue-btn" onClick={handleContinue}>
+          Continue
+        </button>
       </div>
     </div>
   );

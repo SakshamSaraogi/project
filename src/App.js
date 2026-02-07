@@ -10,6 +10,7 @@ import TicTacToe from "./pages/TicTacToe.jsx";
 import ValentineQuestion from "./pages/ValentineQuestion.jsx";
 import HeartLoading from "./pages/HeartLoading.jsx";
 import ConnectionEstablished from "./pages/ConnectionEstablished.jsx";
+import LoveLetter from "./pages/LoveLetter.jsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/valentine" element={<ValentineQuestion />} />
           <Route path="/heart-loading" element={<HeartLoading />} />
           <Route path="/established" element={<ConnectionEstablished />} />
+          <Route path="/letter" element={<LoveLetter />} />
         </Routes>
       </BrowserRouter>
     </div>

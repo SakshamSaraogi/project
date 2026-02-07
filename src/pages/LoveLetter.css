@@ -1,0 +1,204 @@
+@import url("https://fonts.cdnfonts.com/css/patrick-hand");
+
+.love-letter-screen {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffb3d9, #ff85c1, #ffc9e5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: "Patrick Hand", cursive;
+  overflow: hidden;
+}
+
+/* ---------------- ENVELOPE ---------------- */
+
+.envelope-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+  transition: transform 0.6s ease;
+}
+
+.envelope-container.opened {
+  transform: translateY(-80px);
+}
+
+.envelope {
+  width: 320px;
+  height: 210px;
+  position: relative;
+}
+
+.envelope-body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #ff6b9d, #ff5a8f);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* flap */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  background: #f5f5f5;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform 0.9s ease;
+  z-index: 3;
+}
+
+.envelope-flap.opened {
+  transform: rotateX(180deg);
+}
+
+/* seal */
+.envelope-seal {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background: #d63384;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(214, 51, 132, 0.5);
+  animation: pulse 1.8s infinite;
+  z-index: 5;
+}
+
+/* ---------------- BUTTON ---------------- */
+
+.open-btn {
+  padding: 16px 60px;
+  border-radius: 50px;
+  background: #fff;
+  color: #ff4d7f;
+  font-size: 1.3rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.open-btn:hover {
+  transform: translateY(-3px);
+  background: #ffe6f0;
+}
+
+/* ---------------- LETTER ---------------- */
+
+.letter-card {
+  position: absolute;
+  width: 90%;
+  max-width: 600px;
+  
+
+  /* NOTEBOOK PAPER LOOK (RESTORED) */
+  background: #fff;
+  background-image:
+    repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      #e8e8e8 31px,
+      #e8e8e8 32px
+    );
+  background-size: 100% 32px;
+  background-position: 0 55px;
+
+  border-radius: 15px;
+  padding: 50px 40px 50px 90px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+
+  animation: slideUp 0.7s ease forwards;
+  z-index: 10;
+}
+
+/* LEFT PINK MARGIN LINE (RESTORED) */
+.letter-card::before {
+  content: "";
+  position: absolute;
+  left: 60px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ffcce0;
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+}
+
+.letter-title {
+  font-size: 2rem;
+  color: #ff4d7f;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.letter-content {
+  font-size: 1.3rem;
+  color: #555;
+  line-height: 2;
+}
+
+.letter-signature {
+  margin-top: 30px;
+  font-size: 1.4rem;
+  text-align: right;
+  font-style: italic;
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.15);
+  }
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width: 768px) {
+  .letter-card {
+    padding: 40px 30px 40px 75px;
+  }
+
+  .letter-card::before {
+    left: 50px;
+  }
+
+  .letter-content {
+    font-size: 1.15rem;
+  }
+}
