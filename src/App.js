@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PhoneLock from \"./pages/PhoneLock.jsx\";
+import PhoneLock from "./pages/PhoneLock.jsx";
 import LoadingScreen from "./pages/LoadingScreen.jsx";
 import ErrorScreen from "./pages/ErrorScreen.jsx";
 import RecoveryProtocol from "./pages/RecoveryProtocol.jsx";
