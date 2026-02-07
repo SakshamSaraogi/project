@@ -56,7 +56,8 @@ const ValentineQuestion = () => {
                 left: noButtonPosition.left,
                 transform: 'translate(-50%, -50%)'
               }}
-              onMouseEnter={handleNoHover}
+              onMouseEnter={handleNoInteraction} // desktop
+              onClick={handleNoInteraction}      // mobile
             >
               No
             </button>
