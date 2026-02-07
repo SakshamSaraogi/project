@@ -40,7 +40,7 @@ const LoveLetter = () => {
           <h2 className="letter-title">My Dearest Valentine,</h2>
               
               <div className="letter-content">
-                <p>Just like you found these hidden hearts, you've found the deepest parts of my soul.</p>
+                <p>Just like you established the connection, you've found the deepest parts of my soul.</p>
                 
                 <p>Every moment with you is a surprise I cherish, a gift I never want to stop opening.</p>
                 
@@ -50,7 +50,7 @@ const LoveLetter = () => {
                   Happy Valentine's Day! <Heart className="inline-heart" size={18} fill="#d63384" color="#d63384" />
                 </p>
                 
-                <p className="letter-signature">- Yours forever</p>
+                <p className="letter-signature">- Yours Suku</p>
           </div>
         </div>
       )}
