@@ -42,36 +42,27 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
+.progress-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .progress-text {
   font-size: 1.5rem;
   color: #666;
-  margin-top: 20px;
   letter-spacing: 0.1rem;
+  margin: 12px 0 4px;   /* balanced spacing */
 }
 
 .connecting-text {
   font-size: 1rem;
   color: #999;
-  margin-top: 8px;
-
-  /* REAL CENTER FIX */
-  display: inline-block;
+  letter-spacing: 0.2rem;
   text-align: center;
-  letter-spacing: 0.15rem;
-
-  /* optical correction */
-  transform: translateX(0.075rem);
-
   animation: pulse 2s ease-in-out infinite;
-}
-
-.progress-info {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
 }
 
 
