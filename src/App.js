@@ -20,19 +20,22 @@ import HeartLoading from "./pages/HeartLoading.jsx";
 import ConnectionEstablished from "./pages/ConnectionEstablished.jsx";
 import LoveLetter from "./pages/LoveLetter.jsx";
 
-/* 🔒 FORCE RESET ON REFRESH */
+/* 🔒 RESET TO / ONLY ON FULL REFRESH */
 function ResetOnRefresh({ children }) {
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const isReload =
-      performance.getEntriesByType("navigation")[0]?.type === "reload";
+    const hasStarted = sessionStorage.getItem("flowStarted");
 
-    if (isReload && location.pathname !== "/") {
-      navigate("/", { replace: true });
+    if (!hasStarted) {
+      sessionStorage.setItem("flowStarted", "true");
+
+      if (location.pathname !== "/") {
+        navigate("/", { replace: true });
+      }
     }
-  }, [location, navigate]);
+  }, [location.pathname, navigate]);
 
   return children;
 }
