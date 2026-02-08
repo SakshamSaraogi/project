@@ -37,7 +37,6 @@ const LoadingScreen = () => {
           ></div>
         </div>
         <p className="progress-text">{Math.floor(progress)}%</p>
-        <p className="connecting-text">Connecting...</p>
       </div>
     </div>
   );
