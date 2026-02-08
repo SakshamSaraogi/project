@@ -28,14 +28,15 @@ const LoadingScreen = () => {
       <div className="loading-content">
         <h1 className="loading-title">ESTABLISHING CONNECTION</h1>
 
-        <div className="progress-bar-container">
-          <div
-            className="progress-bar-fill"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
+        {/* 🔒 ANCHORED PROGRESS GROUP */}
+        <div className="progress-group">
+          <div className="progress-bar-container">
+            <div
+              className="progress-bar-fill"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
 
-        <div className="progress-info">
           <p className="progress-text">{Math.floor(progress)}%</p>
           <p className="connecting-text">Connecting...</p>
         </div>
