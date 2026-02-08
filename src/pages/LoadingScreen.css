@@ -60,9 +60,12 @@
 .connecting-text {
   font-size: 1rem;
   color: #999;
-  letter-spacing: 0.2rem;
-  text-align: center;
+  letter-spacing: 0.12rem;
   animation: pulse 2s ease-in-out infinite;
+
+  /* 🔑 optical centering fix */
+  position: relative;
+  left: 0.1rem; /* half of letter-spacing */
 }
 
 
