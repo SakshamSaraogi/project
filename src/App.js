@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 import "./App.css";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoadingScreen from "./pages/LoadingScreen.jsx";
 import ErrorScreen from "./pages/ErrorScreen.jsx";
 import PhoneLock from "./pages/PhoneLock.jsx";
@@ -14,8 +14,8 @@ import LoveLetter from "./pages/LoveLetter.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
+    <div className="App">
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoadingScreen />} />
           <Route path="/error" element={<ErrorScreen />} />
@@ -28,9 +28,7 @@ function App() {
           <Route path="/established" element={<ConnectionEstablished />} />
           <Route path="/letter" element={<LoveLetter />} />
         </Routes>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </div>
   );
 }
-
-export default App;
