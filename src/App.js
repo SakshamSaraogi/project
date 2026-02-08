@@ -3,8 +3,8 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  useLocation,
   useNavigate,
+  useLocation,
 } from "react-router-dom";
 
 import "./App.css";
@@ -20,45 +20,57 @@ import HeartLoading from "./pages/HeartLoading.jsx";
 import ConnectionEstablished from "./pages/ConnectionEstablished.jsx";
 import LoveLetter from "./pages/LoveLetter.jsx";
 
-/* 🔒 RESET TO / ONLY ON FULL REFRESH */
-function ResetOnRefresh({ children }) {
+/* 🔐 ROUTE GUARD */
+function RouteGuard({ children }) {
+  const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const started = sessionStorage.getItem("flowStarted");
+
+    // If refreshed and not on home → force reset
+    if (!started && location.pathname !== "/") {
+      navigate("/", { replace: true });
+    }
+  }, [location, navigate]);
+
+  return children;
+}
+
+function AppRoutes() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const hasStarted = sessionStorage.getItem("flowStarted");
-
-    if (!hasStarted) {
+    // Mark flow started once landing on home
+    if (window.location.pathname === "/") {
       sessionStorage.setItem("flowStarted", "true");
-
-      if (location.pathname !== "/") {
-        navigate("/", { replace: true });
-      }
     }
-  }, [location.pathname, navigate]);
+  }, []);
 
-  return children;
+  return (
+    <RouteGuard>
+      <Routes>
+        <Route path="/" element={<LoadingScreen />} />
+        <Route path="/error" element={<ErrorScreen />} />
+        <Route path="/phonelock" element={<PhoneLock />} />
+        <Route path="/recovery" element={<RecoveryProtocol />} />
+        <Route path="/saving" element={<SavingScreen />} />
+        <Route path="/tictactoe" element={<TicTacToe />} />
+        <Route path="/valentine" element={<ValentineQuestion />} />
+        <Route path="/heart-loading" element={<HeartLoading />} />
+        <Route path="/established" element={<ConnectionEstablished />} />
+        <Route path="/letter" element={<LoveLetter />} />
+      </Routes>
+    </RouteGuard>
+  );
 }
 
 function App() {
   return (
     <BrowserRouter>
-      <ResetOnRefresh>
-        <div className="App">
-          <Routes>
-            <Route path="/" element={<LoadingScreen />} />
-            <Route path="/error" element={<ErrorScreen />} />
-            <Route path="/phonelock" element={<PhoneLock />} />
-            <Route path="/recovery" element={<RecoveryProtocol />} />
-            <Route path="/saving" element={<SavingScreen />} />
-            <Route path="/tictactoe" element={<TicTacToe />} />
-            <Route path="/valentine" element={<ValentineQuestion />} />
-            <Route path="/heart-loading" element={<HeartLoading />} />
-            <Route path="/established" element={<ConnectionEstablished />} />
-            <Route path="/letter" element={<LoveLetter />} />
-          </Routes>
-        </div>
-      </ResetOnRefresh>
+      <div className="App">
+        <AppRoutes />
+      </div>
     </BrowserRouter>
   );
 }
