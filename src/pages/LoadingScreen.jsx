@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./LoadingScreen.css";
 
 const LoadingScreen = () => {
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
+    // 🚫 Do nothing if we are NOT on home route
+    if (location.pathname !== "/") return;
+
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 99) {
@@ -24,7 +28,7 @@ const LoadingScreen = () => {
     }, 100);
 
     return () => clearInterval(interval);
-  }, [navigate]);
+  }, [location.pathname, navigate]);
 
   return (
     <div className="loading-screen">
@@ -38,7 +42,6 @@ const LoadingScreen = () => {
           />
         </div>
 
-        {/* CENTERED INFO BLOCK */}
         <div className="progress-info">
           <p className="progress-text">{Math.floor(progress)}%</p>
           <p className="connecting-text">Connecting...</p>
