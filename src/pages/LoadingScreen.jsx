@@ -3,14 +3,16 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./LoadingScreen.css";
 
 const LoadingScreen = () => {
-  const [progress, setProgress] = useState(0);
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
+  const [progress, setProgress] = useState(0);
+
+  // 🔒 HARD STOP: do not render on any route except "/"
+  if (location.pathname !== "/") {
+    return null;
+  }
 
   useEffect(() => {
-    // 🚫 Do nothing if we are NOT on home route
-    if (location.pathname !== "/") return;
-
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 99) {
@@ -28,7 +30,7 @@ const LoadingScreen = () => {
     }, 100);
 
     return () => clearInterval(interval);
-  }, [location.pathname, navigate]);
+  }, [navigate]);
 
   return (
     <div className="loading-screen">
