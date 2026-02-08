@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "./LoadingScreen.css";
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './LoadingScreen.css';
 
 const LoadingScreen = () => {
   const [progress, setProgress] = useState(0);
@@ -11,9 +11,12 @@ const LoadingScreen = () => {
       setProgress((prev) => {
         if (prev >= 99) {
           clearInterval(interval);
-          setTimeout(() => navigate("/error"), 500);
+          setTimeout(() => {
+            navigate('/error');
+          }, 500);
           return 99;
         }
+        // Slower progress at the end
         if (prev > 90) return prev + 0.5;
         if (prev > 70) return prev + 1;
         return prev + 2;
@@ -27,19 +30,14 @@ const LoadingScreen = () => {
     <div className="loading-screen">
       <div className="loading-content">
         <h1 className="loading-title">ESTABLISHING CONNECTION</h1>
-
-        {/* 🔒 ANCHORED PROGRESS GROUP */}
-        <div className="progress-group">
-          <div className="progress-bar-container">
-            <div
-              className="progress-bar-fill"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-
-          <p className="progress-text">{Math.floor(progress)}%</p>
-          <p className="connecting-text">Connecting...</p>
+        <div className="progress-bar-container">
+          <div 
+            className="progress-bar-fill" 
+            style={{ width: `${progress}%` }}
+          ></div>
         </div>
+        <p className="progress-text">{Math.floor(progress)}%</p>
+        <p className="connecting-text">Connecting...</p>
       </div>
     </div>
   );
