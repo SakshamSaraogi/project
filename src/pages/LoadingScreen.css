@@ -61,6 +61,7 @@
   font-size: 1rem;
   color: #999;
   letter-spacing: 0.12rem;
+  margin-left: 0.12rem;
   animation: pulse 2s ease-in-out infinite;
 }
 
