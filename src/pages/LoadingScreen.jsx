@@ -3,16 +3,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./LoadingScreen.css";
 
 const LoadingScreen = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
-
-  // 🔒 HARD STOP: do not render on any route except "/"
-  if (location.pathname !== "/") {
-    return null;
-  }
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
+    // ✅ Guard logic INSIDE the hook (eslint-safe)
+    if (location.pathname !== "/") return;
+
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 99) {
@@ -30,7 +28,12 @@ const LoadingScreen = () => {
     }, 100);
 
     return () => clearInterval(interval);
-  }, [navigate]);
+  }, [location.pathname, navigate]);
+
+  // ✅ Safe conditional render AFTER hooks
+  if (location.pathname !== "/") {
+    return null;
+  }
 
   return (
     <div className="loading-screen">
