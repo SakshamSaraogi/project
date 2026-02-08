@@ -29,7 +29,7 @@
   background: #d0d0d0;
   border-radius: 4px;
   overflow: hidden;
-  margin: 40px 0 24px;
+  margin-bottom: 20px; /* 🔑 spacing to text */
 }
 
 .progress-bar-fill {
@@ -38,17 +38,12 @@
   transition: width 0.3s ease;
 }
 
+/* TEXT STACK */
 .progress-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* 🔑 TRUE VISUAL CENTERING */
-.center-line {
-  width: 220px;           /* fixed visual anchor */
-  display: flex;
-  justify-content: center;
+  gap: 6px;
 }
 
 .progress-text {
@@ -61,7 +56,6 @@
   font-size: 1rem;
   color: #999;
   letter-spacing: 0.12rem;
-  margin-left: 0.2rem;
   animation: pulse 2s ease-in-out infinite;
 }
 
@@ -86,10 +80,6 @@
   .loading-title {
     font-size: 1.3rem;
     letter-spacing: 0.2rem;
-  }
-
-  .center-line {
-    width: 180px;
   }
 
   .progress-text {

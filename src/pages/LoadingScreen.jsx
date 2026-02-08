@@ -36,12 +36,8 @@ const LoadingScreen = () => {
         </div>
 
         <div className="progress-info">
-          <div className="center-line">
-            <p className="progress-text">{Math.floor(progress)}%</p>
-          </div>
-          <div className="center-line">
-            <p className="connecting-text">Connecting...</p>
-          </div>
+          <p className="progress-text">{Math.floor(progress)}%</p>
+          <p className="connecting-text">Connecting...</p>
         </div>
       </div>
     </div>
