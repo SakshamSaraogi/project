@@ -1,5 +1,3 @@
-i want to fix the Connecting text written below to come in center
-
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoadingScreen.css';
