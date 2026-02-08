@@ -1,51 +1,61 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "./LoadingScreen.css";
+import { useState } from "react";
+import { Heart, X } from "lucide-react";
+import "./LoveLetter.css";
 
-const LoadingScreen = () => {
-  const [progress, setProgress] = useState(0);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 99) {
-          clearInterval(interval);
-          setTimeout(() => navigate("/error"), 500);
-          return 99;
-        }
-        if (prev > 90) return prev + 0.5;
-        if (prev > 70) return prev + 1;
-        return prev + 2;
-      });
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, [navigate]);
+const LoveLetter = () => {
+  const [opened, setOpened] = useState(false);
 
   return (
-    <div className="loading-screen">
-      <div className="loading-content">
-        <h1 className="loading-title">ESTABLISHING CONNECTION</h1>
+    <div className="love-letter-screen">
+      {/* ENVELOPE */}
+      <div className={`envelope-container ${opened ? "opened" : ""}`}>
+        <div className="envelope">
+          <div className="envelope-body" />
 
-        <div className="progress-bar-container">
-          <div
-            className="progress-bar-fill"
-            style={{ width: `${progress}%` }}
-          />
+          {/* white flap */}
+          <div className={`envelope-flap ${opened ? "opened" : ""}`} />
+
+          {/* seal */}
+          {!opened && (
+            <div className="envelope-seal">
+              <Heart size={20} fill="#d63384" color="#d63384" />
+            </div>
+          )}
         </div>
 
-        <div className="progress-info">
-          <div className="center-line">
-            <p className="progress-text">{Math.floor(progress)}%</p>
-          </div>
-          <div className="center-line">
-            <p className="connecting-text">Connecting...</p>
-          </div>
-        </div>
+        {!opened && (
+          <button className="open-btn" onClick={() => setOpened(true)}>
+            Open Me
+          </button>
+        )}
       </div>
+
+      {/* LETTER */}
+      {opened && (
+        <div className="letter-card">
+          <button className="close-btn" onClick={() => setOpened(false)}>
+            <X size={22} />
+          </button>
+
+          <h2 className="letter-title">My Dearest Valentine,</h2>
+              
+              <div className="letter-content">
+                <p>Just like you established this connection, you've found the deepest parts of my soul.</p>
+                
+                <p>Every moment with you is a surprise I cherish, a gift I never want to stop opening.</p>
+                
+                <p>Thank you for being my adventure, my comfort, and my love.</p>
+                
+                <p className="letter-closing">
+                  Happy Valentine's Day! <Heart className="inline-heart" size={18} fill="#d63384" color="#d63384" />
+                </p>
+                
+                <p className="letter-signature">- Yours Suku</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default LoadingScreen;
+export default LoveLetter;
