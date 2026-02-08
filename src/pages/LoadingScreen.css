@@ -60,11 +60,29 @@
 .connecting-text {
   font-size: 1rem;
   color: #999;
+<<<<<<< HEAD
   letter-spacing: 0.12rem;
   animation: pulse 2s ease-in-out infinite;
 }
 
 /* animations */
+=======
+  margin-top: 10px;
+  letter-spacing: 0.2rem;
+  text-align: center;      /* ✅ ensure center */
+  width: 100%;             /* ✅ take full width */
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.progress-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+>>>>>>> parent of 94be7eb (Final Fix)
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
